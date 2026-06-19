@@ -28,6 +28,9 @@ desktop.ini
 .vscode/
 .vscode-test/
 
+# Refactor temp folder
+.refact/
+
 # JetBrains IDEs
 .idea/
 
