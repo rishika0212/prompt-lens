@@ -1,27 +1,47 @@
-# Prompt Lens
+<!-- prettier-ignore -->
+# Prompt Lens 🔍
 
-A small VS Code helper that explains selected text or clipboard commands and flags risky patterns.
+[![Status](https://img.shields.io/badge/status-ready-brightgreen.svg)](https://github.com)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- Quickly see risk (green / yellow / red) in the status bar
-- Click the status item for a short explanation and one actionable tip
-- Auto-watches clipboard, selection and terminal activity
+A tiny, focused VS Code extension that explains commands and highlights risky patterns so you can decide before you run things.
+
+Why it helps
+- **See risk quickly** — status bar shows Green / Yellow / Red at a glance.
+- **Understand before you run** — short explanation + one actionable tip.
+- **Zero fuss** — auto-watches clipboard, selection and terminals.
+
+Highlights
+- ✅ Fast local pattern checks (no network needed for many cases)
+- ✅ Full explanations powered by a local Ollama model (configurable)
+- ✅ Lightweight UI: status item + compact analysis panel
 
 Quick start
-```
-# run a local Ollama instance (recommended)
+```bash
+# (recommended) run Ollama locally
 ollama pull llama3
 ollama serve
 
-# open in VS Code and press F5 to run in the Extension Host
+# open the project and run the extension host
 code .
+# press F5 in VS Code to launch the Extension Development Host
 ```
 
-Usage
-- Copy a command → status bar shows risk
-- Select text → status bar updates (click to open panel)
-- Press Ctrl+Shift+L for a full breakdown
+Basic usage
+- Copy a command → status bar updates
+- Select text → status bar updates (click to open details)
+- Press **Ctrl+Shift+L** → full breakdown panel
 
-Configuration
-- Settings: `promptLens.ollamaEndpoint`, `promptLens.model`, and watches
+Configuration (Settings → Prompt Lens)
+- `promptLens.ollamaEndpoint` — Ollama server URL (default: `http://localhost:11434`)
+- `promptLens.model` — model to use (default: `llama3`)
+- `promptLens.clipboardWatch` / `selectionWatch` / `terminalWatch`
 
-License: MIT
+Examples
+- Detects `rm -rf`, `git push --force`, `curl | sh`, `DROP TABLE`, `chmod 777`, and more.
+
+Contributing
+- Open an issue or PR. Keep changes small and focused.
+
+License
+- MIT
