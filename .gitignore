@@ -48,3 +48,6 @@ desktop.ini
 # Misc
 *.bak
 *.tmp
+
+# Example rules file (local)
+example.cursorrules
