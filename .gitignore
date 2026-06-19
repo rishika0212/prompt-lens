@@ -1,0 +1,47 @@
+/node_modules/
+
+# Build outputs
+/dist/
+/build/
+
+# Coverage
+/coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Environment files
+.env
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VSCode
+.vscode/
+.vscode-test/
+
+# JetBrains IDEs
+.idea/
+
+# Caches
+.cache/
+.parcel-cache/
+
+# Packages
+*.tgz
+
+# Keys & certs
+*.pem
+*.key
+
+# Misc
+*.bak
+*.tmp
