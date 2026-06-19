@@ -1,0 +1,85 @@
+{
+  "name": "prompt-lens",
+  "displayName": "Prompt Lens",
+  "description": "Instantly understand and color-code AI commands before you allow them. Works with Claude Code, Copilot, Cursor, and any AI agent in VS Code.",
+  "version": "0.3.0",
+  "publisher": "prompt-lens",
+  "engines": { "vscode": "^1.87.0" },
+  "categories": ["Other", "Education"],
+  "keywords": ["ai", "safety", "claude", "copilot", "agent", "explain", "risk", "terminal", "ollama", "vibecheck"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "promptLens.analyzeSelection",
+        "title": "Lens: Explain This"
+      },
+      {
+        "command": "promptLens.showLastResult",
+        "title": "Lens: Show Last Analysis"
+      },
+      {
+        "command": "promptLens.setApiKey",
+        "title": "Lens: Set Ollama API Key (remote only)"
+      },
+      {
+        "command": "promptLens.clearApiKey",
+        "title": "Lens: Clear Stored API Key"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "promptLens.analyzeSelection",
+        "key": "ctrl+shift+l",
+        "mac": "cmd+shift+l",
+        "when": "editorTextFocus && editorHasSelection"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "promptLens.analyzeSelection",
+          "when": "editorHasSelection",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Prompt Lens",
+      "properties": {
+        "promptLens.ollamaEndpoint": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama server endpoint. Use the default for local, or a remote URL."
+        },
+        "promptLens.model": {
+          "type": "string",
+          "default": "llama3",
+          "description": "Ollama model for analysis (e.g. llama3, mistral, phi3, gemma). Must be pulled first."
+        },
+        "promptLens.clipboardWatch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-analyze clipboard contents. Detects when you copy commands before clicking Allow."
+        },
+        "promptLens.selectionWatch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-analyze when you highlight/select text in the editor."
+        },
+        "promptLens.terminalWatch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show risk notification when an AI agent runs a terminal command."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^2.22.0"
+  }
+}
